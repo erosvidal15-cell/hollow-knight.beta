@@ -1,0 +1,14 @@
+{
+  "fields": [
+    {
+      "key": "location",
+      "label": "Localização"
+    },
+    {
+      "key": "role",
+      "label": "Função"
+    }
+  ],
+  "groups": [],
+  "items": []
+}

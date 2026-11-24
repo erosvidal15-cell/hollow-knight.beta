@@ -1,0 +1,12 @@
+{
+  "fields": [],
+  "groups": [],
+  "items": [
+    {
+      "id": "exemplo-regiao",
+      "name": "Região de exemplo",
+      "description": "Conteúdo de demonstração, criado apenas para testar o sistema. Não é um dado real do jogo.",
+      "demo": true
+    }
+  ]
+}

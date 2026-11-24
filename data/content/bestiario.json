@@ -1,0 +1,31 @@
+{
+  "fields": [
+    {
+      "key": "location",
+      "label": "Localização"
+    },
+    {
+      "key": "reward",
+      "label": "Recompensa"
+    },
+    {
+      "key": "behavior",
+      "label": "Comportamento"
+    }
+  ],
+  "groups": [],
+  "items": [
+    {
+      "id": "exemplo-criatura",
+      "name": "Criatura de exemplo",
+      "description": "Conteúdo de demonstração, criado apenas para testar o sistema. Não é um dado real do jogo.",
+      "demo": true,
+      "location": "Valor de exemplo",
+      "reward": "Valor de exemplo",
+      "behavior": "Valor de exemplo",
+      "related": [
+        "exemplo-regiao"
+      ]
+    }
+  ]
+}

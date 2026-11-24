@@ -1,0 +1,29 @@
+{
+  "fields": [
+    {
+      "key": "location",
+      "label": "Localização"
+    },
+    {
+      "key": "reward",
+      "label": "Recompensa"
+    }
+  ],
+  "groups": [],
+  "items": [
+    {
+      "id": "exemplo-chefe",
+      "name": "Chefe de exemplo",
+      "aliases": [
+        "boss de teste"
+      ],
+      "description": "Conteúdo de demonstração, criado apenas para testar o sistema. Não é um dado real do jogo.",
+      "demo": true,
+      "location": "Valor de exemplo",
+      "reward": "Valor de exemplo",
+      "related": [
+        "exemplo-regiao"
+      ]
+    }
+  ]
+}

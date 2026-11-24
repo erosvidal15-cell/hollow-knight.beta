@@ -1,0 +1,32 @@
+/* Tokens visuais: para mudar a aparência do site, comece por aqui. */
+:root {
+  /* Superfícies: preto e cinzas escuros */
+  --hk-bg: #050607;
+  --hk-bg-2: #0c0e11;
+  --hk-panel: #14171b;
+  --hk-panel-2: #1b1f24;
+  /* Textos e detalhes claros */
+  --hk-text: #e9ebee;
+  --hk-text-muted: #a2a8b0;
+  --hk-white: #f4f5f7;
+  --hk-blue: #5f6f85;
+  --hk-blue-light: #b4c2d4;
+  /* Linhas */
+  --hk-line: #4a5058;
+  --hk-line-soft: #292d33;
+  /* Bordas de campos e botões e ícones de placeholder: mínimo de 3:1 contra todas as superfícies (WCAG 1.4.11) */
+  --hk-control: #69717b;
+  /* Legado: dourado da identidade anterior. Não é usado na interface atual; mantido para ajustes futuros. */
+  --hk-gold: #C9A96E;
+
+  /* Imagem de fundo da home: troque o arquivo em assets/images/backgrounds/ ou esta linha. */
+  --hero-image: url('../assets/images/backgrounds/hero.jpg');
+
+  --font-display: 'Cormorant SC', 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --header-h: 64px;
+  --tile: 112px;
+  --ease: cubic-bezier(.22, .61, .36, 1);
+}
+@media (max-width: 575.98px) { :root { --tile: 92px; } }

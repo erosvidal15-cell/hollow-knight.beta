@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Sondagem da API | Ferramenta de desenvolvimento</title>
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <style>
+    .wrap { max-width: 1000px; margin: 0 auto; padding: 2rem 1rem 4rem; }
+    h1 { font-size: 2.4rem; } h2 { font-size: 1.6rem; margin-top: 2rem; }
+    a { color: var(--hk-blue-light); }
+    input[type=text] { width: 100%; max-width: 26rem; padding: .5rem; color: var(--hk-text); background: var(--hk-bg-2); border: 1px solid var(--hk-line); }
+    .base { display: block; margin: .3rem 0; }
+    .actions { display: flex; flex-wrap: wrap; gap: .75rem; margin: 1.2rem 0; }
+    button:disabled { opacity: .45; cursor: not-allowed; }
+    .tablewrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+    th, td { padding: .6rem; text-align: left; vertical-align: top; border-bottom: 1px solid var(--hk-line-soft); }
+    .st { font-weight: 600; white-space: nowrap; } .st-ok { color: var(--hk-blue-light); } .st-parcial { color: var(--hk-gold); } .st-falha { text-decoration: underline wavy; } .st-ignorado { opacity: .6; }
+    pre { max-height: 14rem; overflow: auto; padding: .6rem; background: var(--hk-bg-2); font-size: .78rem; white-space: pre-wrap; word-break: break-all; }
+    dt { color: var(--hk-gold); margin-top: .6rem; } dd { margin: 0; color: var(--hk-text-muted); word-break: break-word; }
+    #preview img { max-width: 300px; height: auto; border: 1px solid var(--hk-line); }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <p><a href="../index.html">Voltar ao site</a>. Ferramenta de desenvolvimento, fora do site público.</p>
+    <h1>Sondagem da API</h1>
+    <p>Prova de conceito: verifica acesso, CORS, módulos, paginação, imagens e licenças da wiki. Faz no máximo 20 requisições de leitura, <strong>não grava nada</strong> e não baixa imagens para o projeto.</p>
+    <ol>
+      <li>Abra esta página pelo Live Server.</li>
+      <li>Clique em <em>Executar sondagem</em> e aguarde (10 a 20 segundos).</li>
+      <li>Clique em <em>Copiar relatório</em> e cole na conversa (ou baixe o .json).</li>
+    </ol>
+    <fieldset><legend>Endereços a testar</legend><div id="bases"></div></fieldset>
+    <p><label for="cat">Categoria de amostra</label><br><input type="text" id="cat" value="Categoria:Chefes"></p>
+    <div class="actions">
+      <button class="btn-hk" id="run" type="button">Executar sondagem</button>
+      <button class="btn-hk btn-hk--ghost" id="copy" type="button" disabled>Copiar relatório</button>
+      <button class="btn-hk btn-hk--ghost" id="btn-dl" type="button" disabled>Baixar relatório (.json)</button>
+    </div>
+    <p id="status" role="status"></p>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Teste</th><th>Endereço</th><th>Resultado</th><th>Resumo</th></tr></thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+    <section id="preview" hidden>
+      <h2>Pré-visualização temporária</h2>
+      <img id="pimg" alt="Miniatura de amostra retornada pela API" referrerpolicy="no-referrer">
+      <p>Exibida só para conferência. Não é salva nem faz parte do site; a licença ainda não foi verificada.</p>
+    </section>
+    <section id="summary" hidden><h2>Conclusões</h2><dl id="concl"></dl></section>
+  </main>
+
+  <script type="module">
+    import { runProbe, BASES } from './sondagem.js';
+    const $ = (id) => document.getElementById(id);
+    let report = null;
+
+    $('bases').append(...BASES.map((b, i) => {
+      const label = document.createElement('label'); label.className = 'base';
+      const box = document.createElement('input'); box.type = 'checkbox'; box.checked = true; box.dataset.i = i;
+      label.append(box, ` ${b.url} (${b.nota})`);
+      return label;
+    }));
+
+    // textContent (nunca innerHTML): o conteúdo vem de fora e não pode virar HTML
+    function addRow(r) {
+      const cell = (text, cls) => { const td = document.createElement('td'); td.textContent = text; if (cls) td.className = cls; return td; };
+      const sum = cell(r.resumo + (r.httpStatus ? ` [HTTP ${r.httpStatus}, ${r.ms} ms]` : ` [${r.ms} ms]`));
+      const details = document.createElement('details'), s = document.createElement('summary'), pre = document.createElement('pre');
+      s.textContent = 'ver dados brutos'; pre.textContent = JSON.stringify({ url: r.url, dados: r.detalhes }, null, 2);
+      details.append(s, pre); sum.append(details);
+      let where = r.base; try { where = new URL(r.base).pathname.replace('/api.php', ''); } catch {}
+      const tr = document.createElement('tr');
+      tr.append(cell(`${r.id} ${r.teste}`), cell(where), cell(r.status, 'st st-' + r.status), sum);
+      $('rows').append(tr);
+      if (r.preview) { $('pimg').src = r.preview; $('preview').hidden = false; }
+    }
+
+    function showConclusions(c) {
+      for (const [k, v] of Object.entries(c)) {
+        const dt = document.createElement('dt'), dd = document.createElement('dd');
+        dt.textContent = k; dd.textContent = typeof v === 'string' ? v : JSON.stringify(v);
+        $('concl').append(dt, dd);
+      }
+      $('summary').hidden = false;
+    }
+
+    $('run').addEventListener('click', async () => {
+      const bases = BASES.filter((_, i) => document.querySelector(`#bases input[data-i="${i}"]`).checked);
+      if (!bases.length) { $('status').textContent = 'Selecione ao menos um endereço.'; return; }
+      for (const id of ['run', 'copy', 'btn-dl']) $(id).disabled = true;
+      $('rows').replaceChildren(); $('concl').replaceChildren(); $('summary').hidden = true; $('preview').hidden = true;
+      $('status').textContent = 'Executando…';
+      try {
+        report = await runProbe({ bases, categoryTitle: $('cat').value.trim() || 'Categoria:Chefes', onStep: addRow });
+        showConclusions(report.conclusoes);
+        $('status').textContent = `Concluído: ${report.requisicoes} requisições.`;
+      } catch (e) { $('status').textContent = 'Erro inesperado na ferramenta: ' + e.message; }
+      $('run').disabled = false;
+      if (report) { $('copy').disabled = false; $('btn-dl').disabled = false; }
+    });
+
+    $('copy').addEventListener('click', async () => {
+      const text = JSON.stringify(report, null, 2);
+      try { await navigator.clipboard.writeText(text); $('status').textContent = 'Relatório copiado.'; }
+      catch { const ta = document.createElement('textarea'); ta.value = text; document.body.append(ta); ta.select(); document.execCommand('copy'); ta.remove(); $('status').textContent = 'Relatório copiado (modo alternativo).'; }
+    });
+
+    $('btn-dl').addEventListener('click', () => {
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(new Blob([JSON.stringify(report, null, 2)], { type: 'application/json' }));
+      a.download = `sondagem-api-${new Date().toISOString().slice(0, 10)}.json`;
+      a.click(); URL.revokeObjectURL(a.href);
+    });
+  </script>
+</body>
+</html>

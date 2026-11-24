@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Arquivos de Hallownest | Wiki de Hollow Knight | Arquivos de Hallownest</title>
+  <meta name="description" content="Wiki de fãs sobre Hollow Knight: chefes, bestiário, amuletos, personagens, regiões, itens, habilidades, conquistas e lore.">
+  <meta name="theme-color" content="#050607">
+  <link rel="icon" type="image/svg+xml" href="assets/svg/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@500;600&family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body data-page="home" data-root="">
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+  <div id="site-header"></div>
+
+  <main id="conteudo">
+    <header class="hero" id="inicio">
+      <div class="hero__inner">
+        <img class="ornament" src="assets/svg/ornament.svg" alt="" width="300" height="24">
+        <h1 class="hero__title">Arquivos de Hallownest</h1>
+        <p class="hero__sub">Uma wiki de fãs sobre Hollow Knight</p>
+        <img class="ornament" src="assets/svg/ornament.svg" alt="" width="300" height="24">
+        <p class="hero__lead">Um guia em português para consultar chefes, criaturas, amuletos, regiões e muito mais.</p>
+      </div>
+    </header>
+
+    <section class="section" id="categorias" aria-labelledby="categorias-titulo">
+      <div class="container">
+        <h2 class="section__title" id="categorias-titulo">Categorias</h2>
+        <img class="ornament" src="assets/svg/ornament.svg" alt="" width="300" height="24">
+        <div class="groups" id="groups-grid" aria-live="polite"><noscript><p class="hk-empty">Ative o JavaScript para ver as categorias.</p></noscript></div>
+      </div>
+    </section>
+
+    <section class="section" id="destaques" aria-labelledby="destaques-titulo">
+      <div class="container">
+        <h2 class="section__title" id="destaques-titulo">Conteúdos em destaque</h2>
+        <img class="ornament" src="assets/svg/ornament.svg" alt="" width="300" height="24">
+        <div id="featured" aria-live="polite"></div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+  <div class="hk-toast" id="toast" role="status" aria-live="polite"></div>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

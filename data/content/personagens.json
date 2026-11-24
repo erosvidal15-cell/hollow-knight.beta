@@ -1,0 +1,26 @@
+{
+  "fields": [
+    {
+      "key": "location",
+      "label": "Localização"
+    },
+    {
+      "key": "role",
+      "label": "Função"
+    }
+  ],
+  "groups": [],
+  "items": [
+    {
+      "id": "exemplo-personagem",
+      "name": "Personagem de exemplo",
+      "description": "Conteúdo de demonstração, criado apenas para testar o sistema. Não é um dado real do jogo.",
+      "demo": true,
+      "location": "Valor de exemplo",
+      "role": "Valor de exemplo",
+      "related": [
+        "exemplo-chefe"
+      ]
+    }
+  ]
+}

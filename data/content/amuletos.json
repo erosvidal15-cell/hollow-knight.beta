@@ -1,0 +1,31 @@
+{
+  "fields": [
+    {
+      "key": "effect",
+      "label": "Efeito"
+    },
+    {
+      "key": "cost",
+      "label": "Custo em encaixes"
+    },
+    {
+      "key": "location",
+      "label": "Localização"
+    }
+  ],
+  "groups": [],
+  "items": [
+    {
+      "id": "exemplo-amuleto",
+      "name": "Amuleto de exemplo",
+      "description": "Conteúdo de demonstração, criado apenas para testar o sistema. Não é um dado real do jogo.",
+      "demo": true,
+      "effect": "Valor de exemplo",
+      "cost": "Valor de exemplo",
+      "location": "Valor de exemplo",
+      "related": [
+        "exemplo-regiao"
+      ]
+    }
+  ]
+}

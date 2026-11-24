@@ -1,0 +1,44 @@
+[
+  {
+    "id": "combate",
+    "label": "Combate"
+  },
+  {
+    "id": "colecionaveis",
+    "label": "Colecionáveis"
+  },
+  {
+    "id": "personagens",
+    "label": "Personagens"
+  },
+  {
+    "id": "exploracao",
+    "label": "Exploração"
+  },
+  {
+    "id": "progressao",
+    "label": "Progressão"
+  },
+  {
+    "id": "conhecimento",
+    "label": "Conhecimento"
+  },
+  {
+    "id": "diversos",
+    "label": "Diversos",
+    "pages": [
+      {
+        "title": "Sobre",
+        "text": "Sobre a wiki e o projeto.",
+        "href": "pages/sobre.html",
+        "icon": "guias"
+      },
+      {
+        "title": "Criadores",
+        "text": "Quem está por trás do projeto.",
+        "href": "pages/criadores.html",
+        "icon": "personagens"
+      }
+    ]
+  }
+]

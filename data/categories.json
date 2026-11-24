@@ -1,0 +1,119 @@
+[
+  {
+    "id": "chefes",
+    "icon": "chefes",
+    "title": "Chefes",
+    "text": "Os confrontos mais marcantes da jornada.",
+    "group": "combate",
+    "href": "pages/chefes.html",
+    "status": "ready"
+  },
+  {
+    "id": "bestiario",
+    "icon": "bestiario",
+    "title": "Bestiário",
+    "text": "Criaturas e inimigos encontrados ao longo do reino.",
+    "group": "combate",
+    "href": "pages/bestiario.html",
+    "status": "ready"
+  },
+  {
+    "id": "amuletos",
+    "icon": "amuletos",
+    "title": "Amuletos",
+    "text": "Amuletos e combinações: efeito, custo em encaixes e onde encontrá-los.",
+    "group": "colecionaveis",
+    "href": "pages/amuletos.html",
+    "status": "ready"
+  },
+  {
+    "id": "itens",
+    "icon": "itens",
+    "title": "Itens",
+    "text": "Itens e objetos encontrados ao longo da jornada.",
+    "group": "colecionaveis",
+    "href": "pages/itens.html",
+    "status": "ready"
+  },
+  {
+    "id": "npcs",
+    "icon": "npcs",
+    "title": "NPCs",
+    "text": "Personagens não jogáveis que o jogador encontra pelo caminho.",
+    "group": "personagens",
+    "href": "pages/npcs.html",
+    "status": "ready"
+  },
+  {
+    "id": "personagens",
+    "icon": "personagens",
+    "title": "Personagens",
+    "text": "Figuras e criaturas que cruzam o seu caminho.",
+    "group": "personagens",
+    "href": "pages/personagens.html",
+    "status": "ready"
+  },
+  {
+    "id": "regioes",
+    "icon": "locais",
+    "title": "Regiões",
+    "text": "Regiões, cavernas e caminhos para explorar.",
+    "group": "exploracao",
+    "href": "pages/regioes.html",
+    "status": "ready"
+  },
+  {
+    "id": "mapas",
+    "icon": "mapas",
+    "title": "Mapas",
+    "text": "Mapas do reino e de suas regiões.",
+    "group": "exploracao",
+    "href": "pages/mapas.html",
+    "status": "ready"
+  },
+  {
+    "id": "habilidades",
+    "icon": "habilidades",
+    "title": "Habilidades",
+    "text": "Poderes e movimentos que ampliam a exploração.",
+    "group": "progressao",
+    "href": "pages/habilidades.html",
+    "status": "ready"
+  },
+  {
+    "id": "conquistas",
+    "icon": "conquistas",
+    "title": "Conquistas",
+    "text": "Marcos e desafios para acompanhar o seu progresso.",
+    "group": "progressao",
+    "href": "pages/conquistas.html",
+    "status": "ready"
+  },
+  {
+    "id": "lore",
+    "icon": "lore",
+    "title": "Lore",
+    "text": "Histórias, mistérios e fragmentos de narrativa.",
+    "group": "conhecimento",
+    "href": "pages/lore.html",
+    "status": "ready"
+  },
+  {
+    "id": "guias",
+    "icon": "guias",
+    "title": "Guias",
+    "text": "Orientações para começar, explorar e superar obstáculos.",
+    "group": "conhecimento",
+    "href": "pages/guias.html",
+    "status": "ready"
+  },
+  {
+    "id": "modos-dlcs",
+    "icon": "modos",
+    "title": "Modos e DLCs",
+    "text": "Modos de jogo e conteúdos adicionais.",
+    "group": "diversos",
+    "href": "pages/modos-dlcs.html",
+    "status": "ready"
+  }
+]

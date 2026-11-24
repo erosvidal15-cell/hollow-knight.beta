@@ -1,0 +1,14 @@
+{
+  "fields": [
+    {
+      "key": "effect",
+      "label": "Efeito"
+    },
+    {
+      "key": "location",
+      "label": "Onde obter"
+    }
+  ],
+  "groups": [],
+  "items": []
+}
